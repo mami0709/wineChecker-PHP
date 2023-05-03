@@ -5,6 +5,7 @@ services:
         container_name: "php74-1"
         volumes:
             - "./html/:/var/www/html"
+            - "./log/:/var/log/appache2"
         privileged: true
         ports:
             - "8080:80"
