@@ -24,6 +24,20 @@ try {
 	$email = $data['email'];
 	$password = $data['password'];
 
+	// メールアドレスのバリデーション
+	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		http_response_code(400);
+		echo json_encode(['message' => 'メールアドレスの形式が正しくありません']);
+		exit;
+	}
+
+	// パスワードのバリデーション
+	if (strlen($password) < 8) {
+		http_response_code(400);
+		echo json_encode(['message' => 'パスワードは8文字以上にしてください']);
+		exit;
+	}
+
 	// パスワードをハッシュ化
 	$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
