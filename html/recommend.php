@@ -11,21 +11,6 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 try {
     // DB接続
     $dbh = new PDO($dsn, $user, $password);
-    // $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // $path = ltrim($_SERVER['REQUEST_URI'], '/');
-    // $elements = explode('/', $path);
-
-    // if($elements[0] == "/recommend.php") {
-    //     $stmt = $dbh->query("SELECT * FROM recommend_wines");
-    //     $wines = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    //     header('Content-Type: application/json');
-    //     echo json_encode([
-    //         'result' => 'SUCCESS',
-    //         'data' => $wines
-    //     ], JSON_UNESCAPED_UNICODE);
-    // } 
 
     // 初期データ
     $sampleData = [
@@ -34,7 +19,7 @@ try {
             'wine_name' => 'ドメーヌ バロン ド ロートシルト ポーイヤック レゼルブ スペシアル',
             'winery' => 'ブルゴーニュ',
             'wine_type' => '赤ワイン',
-            'wine_image' => 'images/01.webp',
+            'wine_image' => 'https://m.media-amazon.com/images/I/51oIGuJ2aFL.__AC_SX342_SY445_QL70_ML2_.jpg',
             'wine_country' => 'フランス',
             'wine_url' => 'https://www.amazon.co.jp/dp/B00ISJ9DVC?ots=1&tag=s02a3-22&th=1',
             'one_word' => '力強い飲み口ときめ細やかでしっかりとした果実味',
@@ -49,7 +34,7 @@ try {
             'wine_name' => 'シャトー・ラネッサン',
             'winery' => 'ブルゴーニュ',
             'wine_type' => '赤ワイン',
-            'wine_image' => 'images/02.webp',
+            'wine_image' => 'https://enoteca.imagewave.pictures/R7c7J1v7R/bottle-500',
             'wine_country' => 'フランス',
             'wine_url' => 'https://www.enoteca.co.jp/item/detail/010050861',
             'one_word' => '力強い飲み口ときめ細やかでしっかりとした果実味',
@@ -64,7 +49,7 @@ try {
             'wine_name' => 'ドメーヌ バロン ド ロートシルト ポーイヤック レゼルブ スペシアル',
             'winery' => 'ブルゴーニュ',
             'wine_type' => '赤ワイン',
-            'wine_image' => 'images/03.jpg',
+            'wine_image' => 'https://m.media-amazon.com/images/I/51oIGuJ2aFL.__AC_SX342_SY445_QL70_ML2_.jpg',
             'wine_country' => 'フランス',
             'wine_url' => 'https://www.amazon.co.jp/dp/B00ISJ9DVC?ots=1&tag=s02a3-22&th=1',
             'one_word' => '力強い飲み口ときめ細やかでしっかりとした果実味',
@@ -79,7 +64,67 @@ try {
             'wine_name' => 'シャトー・ラネッサン',
             'winery' => 'ブルゴーニュ',
             'wine_type' => '赤ワイン',
-            'wine_image' => 'public/images/04.jpg',
+            'wine_image' => 'https://enoteca.imagewave.pictures/R7c7J1v7R/bottle-500',
+            'wine_country' => 'フランス',
+            'wine_url' => 'https://www.enoteca.co.jp/item/detail/010050861',
+            'one_word' => '力強い飲み口ときめ細やかでしっかりとした果実味',
+            'english_wine_name' => 'CH.LANESSAN',
+            'years' => '2013',
+            'producer' => 'CH.LANESSAN シャトー・ラネッサン',
+            'breed' => 'カベルネ・ソーヴィニヨン、メルロー、プティ・ヴェルド',
+            'capacity' => 750
+        ],
+        [
+            'comment' => '最高級ワインの産地として知られる、フランスのメドック地区で造られたフルボディ赤ワインです。世界的に有名な「シャトー ラフィット・ロートシルト」を運営する、ロスチャイルド家が醸造しています。カベルネ・ソーヴィニヨンとメルローがブレンドされ、力強い飲み口と、きめ細やかでしっかりとした果実味が特徴です。使われているブドウの一部は、第1級の格付けのラフィット・ロートシルトで収穫されたモノ。エレガントで高級感のある味わいの赤ワインが5000円以下で楽しめる、コストパフォーマンスの高さもポイントです。',
+            'wine_name' => '白ワイン1',
+            'winery' => 'ブルゴーニュ',
+            'wine_type' => '赤ワイン',
+            'wine_image' => 'https://m.media-amazon.com/images/I/51oIGuJ2aFL.__AC_SX342_SY445_QL70_ML2_.jpg',
+            'wine_country' => 'フランス',
+            'wine_url' => 'https://www.amazon.co.jp/dp/B00ISJ9DVC?ots=1&tag=s02a3-22&th=1',
+            'one_word' => '力強い飲み口ときめ細やかでしっかりとした果実味',
+            'english_wine_name' => 'Domane Barons de Rothschild',
+            'years' => '2020',
+            'producer' => 'ロスチャイルド家',
+            'breed' => 'カベルネ・ソーヴィニヨン、メルロー',
+            'capacity' => 750
+        ],
+        [
+            'comment' => '名門ブテイエ家が所有し、お値打ちなボルドーワインとして確固たる地位を築くシャトー。ワイン評論家ロバート・パーカー氏も「メドックのワイン格付けをやり直せば、おそらく格付け第五級の地位が真剣に検討されるワインである」と大絶賛しています。凝縮した果実味と滑らかなタンニンが調和した味わいです。',
+            'wine_name' => '白ワイン2',
+            'winery' => 'ブルゴーニュ',
+            'wine_type' => '赤ワイン',
+            'wine_image' => 'https://enoteca.imagewave.pictures/R7c7J1v7R/bottle-500',
+            'wine_country' => 'フランス',
+            'wine_url' => 'https://www.enoteca.co.jp/item/detail/010050861',
+            'one_word' => '力強い飲み口ときめ細やかでしっかりとした果実味',
+            'english_wine_name' => 'CH.LANESSAN',
+            'years' => '2013',
+            'producer' => 'CH.LANESSAN シャトー・ラネッサン',
+            'breed' => 'カベルネ・ソーヴィニヨン、メルロー、プティ・ヴェルド',
+            'capacity' => 750
+        ],
+        [
+            'comment' => '最高級ワインの産地として知られる、フランスのメドック地区で造られたフルボディ赤ワインです。世界的に有名な「シャトー ラフィット・ロートシルト」を運営する、ロスチャイルド家が醸造しています。カベルネ・ソーヴィニヨンとメルローがブレンドされ、力強い飲み口と、きめ細やかでしっかりとした果実味が特徴です。使われているブドウの一部は、第1級の格付けのラフィット・ロートシルトで収穫されたモノ。エレガントで高級感のある味わいの赤ワインが5000円以下で楽しめる、コストパフォーマンスの高さもポイントです。',
+            'wine_name' => '白ワイン3',
+            'winery' => 'ブルゴーニュ',
+            'wine_type' => '赤ワイン',
+            'wine_image' => 'https://m.media-amazon.com/images/I/51oIGuJ2aFL.__AC_SX342_SY445_QL70_ML2_.jpg',
+            'wine_country' => 'フランス',
+            'wine_url' => 'https://www.amazon.co.jp/dp/B00ISJ9DVC?ots=1&tag=s02a3-22&th=1',
+            'one_word' => '力強い飲み口ときめ細やかでしっかりとした果実味',
+            'english_wine_name' => 'Domane Barons de Rothschild',
+            'years' => '2020',
+            'producer' => 'ロスチャイルド家',
+            'breed' => 'カベルネ・ソーヴィニヨン、メルロー',
+            'capacity' => 750
+        ],
+        [
+            'comment' => '名門ブテイエ家が所有し、お値打ちなボルドーワインとして確固たる地位を築くシャトー。ワイン評論家ロバート・パーカー氏も「メドックのワイン格付けをやり直せば、おそらく格付け第五級の地位が真剣に検討されるワインである」と大絶賛しています。凝縮した果実味と滑らかなタンニンが調和した味わいです。',
+            'wine_name' => '白ワイン4',
+            'winery' => 'ブルゴーニュ',
+            'wine_type' => '赤ワイン',
+            'wine_image' => 'https://enoteca.imagewave.pictures/R7c7J1v7R/bottle-500',
             'wine_country' => 'フランス',
             'wine_url' => 'https://www.enoteca.co.jp/item/detail/010050861',
             'one_word' => '力強い飲み口ときめ細やかでしっかりとした果実味',
@@ -106,7 +151,7 @@ try {
             wine_type VARCHAR(255),
             wine_image VARCHAR(255),
             wine_country VARCHAR(255),
-            wine_url VARCHAR(255),
+            wine_url VARCHAR(1000),
             one_word VARCHAR(255),
             english_wine_name VARCHAR(255),
             years VARCHAR(255),
