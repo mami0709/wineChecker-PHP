@@ -146,19 +146,20 @@ try {
         $sql = "CREATE TABLE recommend_wines (
             id INT AUTO_INCREMENT PRIMARY KEY,
             comment TEXT,
-            wine_name VARCHAR(255),
-            winery VARCHAR(255),
-            wine_type VARCHAR(255),
-            wine_image VARCHAR(255),
-            wine_country VARCHAR(255),
-            wine_url VARCHAR(1000),
+            wine_name VARCHAR(255) NOT NULL,
+            winery VARCHAR(255) NOT NULL,
+            wine_type VARCHAR(255) NOT NULL,
+            wine_image VARCHAR(255) NOT NULL,
+            wine_country VARCHAR(255) NOT NULL,
+            wine_url VARCHAR(1000) NOT NULL,
             one_word VARCHAR(255),
             english_wine_name VARCHAR(255),
             years VARCHAR(255),
             producer VARCHAR(255),
-            breed VARCHAR(255),
+            breed VARCHAR(255) NOT NULL,
             capacity INT
         )";
+
         $dbh->exec($sql);
     }
 
