@@ -9,8 +9,9 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, X-Requested-With");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-	// preflight request. reply successfully:
+	// サーバーがOPTIONSメソッドのリクエストを受け取った際には、何もせずに正常終了
 	exit;
 } elseif ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 	http_response_code(400);
