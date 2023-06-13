@@ -9,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     die();
 }
 
-
 // データベース接続
 $dsn = "mysql:dbname=test_db;host=mysql8-1;port=3306";
 $user = "test_user";
@@ -33,10 +32,11 @@ if (!$user || !password_verify($password, $user['user_password'])) {
     exit;
 }
 
-// ユーザ情報が正しい場合、トークンを生成し返す
+// ユーザ情報が正しい場合、新しいトークンを生成
 $token = bin2hex(random_bytes(16));
-$stmt = $db->prepare('INSERT INTO tokens (user_id, token) VALUES (?, ?)');
-$stmt->execute([$user['id'], $token]);
+
+// 生成されたトークンで既存のトークンを更新
+$stmt = $db->prepare('UPDATE user SET token = ? WHERE id = ?');
+$stmt->execute([$token, $user['id']]);
 
 echo json_encode(['token' => $token]);
-?>
