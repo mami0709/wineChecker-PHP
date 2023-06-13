@@ -50,7 +50,7 @@ https://github.com/mami0709/wineChecker-React
 git clone https://github.com/mami0709/wineChecker-PHP.git
 ```
 
-2. Docker を起動。
+2. Docker を起動。  
    `docker-compose up -d`  
    http://localhost:8080/ で PHP info が表示されたら OK
 
