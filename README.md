@@ -28,12 +28,14 @@ Wine Checker
 - Docker
 
 # デザイン
-デザインは最初にFigmaで起こしました。
+
+デザインは最初に Figma で起こしました。
 https://www.figma.com/file/aXsIMaNZ9bn2NV0YsO4M8o/WineChecker%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3?type=design&node-id=0-1&t=BFrK8KTRqfjCDtoH-0
 
 # 環境構築
 
 ### はじめに
+
 このアプリはフロントとバックエンドを別々のリポジトリで管理しています。
 なので手元で動かす際はどちらもローカルで起動した上でご使用ください。
 
@@ -42,32 +44,34 @@ https://github.com/mami0709/wineChecker-React
 
 ### バックエンドの環境構築手順
 
-1. gitからクローンする
+1. git からクローンする
+
 ```
 git clone https://github.com/mami0709/wineChecker-PHP.git
 ```
 
-2. Dockerを起動。
-`docker-compose up -d`
-http://localhost:8080/ でPHP infoが表示されたらOK
+2. Docker を起動。
+   `docker-compose up -d`  
+   http://localhost:8080/ で PHP info が表示されたら OK
 
+### フロントエンドの環境構築手順
 
+1. git からクローンする
 
-###  フロントエンドの環境構築手順
-
-
-1. gitからクローンする
 ```
 git clone https://github.com/mami0709/wineChecker-React.git
 ```
 
 2. パッケージのインストール
+
 ```
 npm i
 ```
 
 3. ローカル起動
+
 ```
 npm run dev
 ```
-http://localhost:3000/ にアクセスしてトップページが表示されればOK！
+
+http://localhost:3000/ にアクセスしてトップページが表示されれば OK！
