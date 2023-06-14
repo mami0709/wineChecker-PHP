@@ -13,7 +13,7 @@ try {
     $dbh = new PDO($dsn, $user, $password);
 
     // 初期データ
-    $sampleData = require 'sampleData/shiroSample.php';
+    $sampleData = require '../sampleData/shiroSample.php';
 
 
     // テーブルの存在確認

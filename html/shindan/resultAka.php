@@ -13,7 +13,7 @@ try {
     $dbh = new PDO($dsn, $user, $password);
 
     // 初期データ
-    $sampleData = require 'sampleData/akaSample.php';
+    $sampleData = require '../sampleData/akaSample.php';
 
     // テーブルの存在確認
     $sql = "SHOW TABLES LIKE 'result_aka'";
