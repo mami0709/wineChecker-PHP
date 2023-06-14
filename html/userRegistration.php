@@ -24,13 +24,13 @@ try {
 		$sql = "CREATE TABLE `user` (
 				`id` int unsigned NOT NULL AUTO_INCREMENT,
 				`mail_address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'sample@example.com',
-				`user_password` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '".password_hash('defaultpassword', PASSWORD_DEFAULT)."',
+				`user_password` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '" . password_hash('defaultpassword', PASSWORD_DEFAULT) . "',
 				`created_at` datetime NOT NULL,
 				`token` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
 				`user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'サンプル',
 				`user_name_hiragana` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'さんぷる',
 				`telephone_number` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '000-0000-0000',
-				`nickname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'nickname',
+				`nickname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'にっくねーむ'
 				PRIMARY KEY (`id`)
 		) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;";
 		$db->exec($sql);
@@ -59,14 +59,14 @@ try {
 	VALUES (?, ?, ?, ?, ?,	?, ?, ?)');
 	$token = bin2hex(random_bytes(16));
 	$execution_result = $stmt->execute([
-		$email, 
-		$hashed_password, 
-		date("Y-m-d H:i:s"), 
-		$token, 
-		$data['user_name'] ?? 'サンプル', 
-		$data['user_name_hiragana'] ?? 'さんぷる', 
-		$data['telephone_number'] ?? '000-0000-0000', 
-		$data['nickname'] ?? 'nickname'
+		$email,
+		$hashed_password,
+		date("Y-m-d H:i:s"),
+		$token,
+		$data['user_name'] ?? 'サンプル',
+		$data['user_name_hiragana'] ?? 'さんぷる',
+		$data['telephone_number'] ?? '000-0000-0000',
+		$data['nickname'] ?? 'にっくねーむ'
 	]);
 
 	if (!$execution_result) {
