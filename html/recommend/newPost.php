@@ -25,17 +25,19 @@ $user = "test_user";
 $password = "test_password";
 $db = new PDO($dsn, $user, $password);
 
-// リクエストからワインの情報を取得
+// リクエストからワインの情報を連想配列で取得
 $rawData = file_get_contents('php://input');
 error_log('Raw data: ' . $rawData);
 $data = json_decode($rawData, true);
 
+// リクエストメソッドがPOSTかどうかを確認
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 	http_response_code(400);
 	echo json_encode(['message' => 'Invalid request method.']);
 	exit;
 }
 
+// nullでないか確認
 if ($data === null) {
 	http_response_code(400);
 	echo json_encode(['message' => 'リクエストボディが不適切です。']);

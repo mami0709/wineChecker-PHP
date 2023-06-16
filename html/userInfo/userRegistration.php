@@ -17,9 +17,11 @@ $db = new PDO($dsn, $user, $password);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 try {
+	// userテーブルの存在確認
 	$result = $db->query("SHOW TABLES LIKE 'user'");
 	$tableExists = ($result->rowCount() > 0);
 
+	// userテーブルが存在しない場合、作成する
 	if (!$tableExists) {
 		$sql = "CREATE TABLE `user` (
 				`id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -36,10 +38,13 @@ try {
 		$db->exec($sql);
 	}
 
+	// リクエストボディを取得し、JSON形式の連想配列に変換
 	$data = json_decode(file_get_contents('php://input'), true);
+	// emailやpasswordがnullであれば、右辺を代入。存在すればそれを代入。
 	$email = $data['email'] ?? 'sample@example.com';
 	$password = $data['password'] ?? 'defaultpassword';
 
+	// バリデーションチェック
 	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		http_response_code(400);
 		echo json_encode(['message' => 'メールアドレスの形式が正しくありません']);

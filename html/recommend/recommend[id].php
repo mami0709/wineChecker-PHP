@@ -19,7 +19,9 @@ try {
     // 指定されたIDのワイン情報を取得する
     $sql = "SELECT id, comment, wine_name, winery, wine_type, wine_image, wine_country, wine_url, one_word, english_wine_name, years, producer, breed, capacity FROM recommend_wines WHERE id = ?";
     $stmt = $dbh->prepare($sql);
+     //execute:事前に定義されたSQLクエリにパラメータをバインド（結びつけ）し、そのクエリをデータベースで実行
     $stmt->execute([$id]);
+    // fetchメソッドを使って実行結果を取得。PDO::FETCH_ASSOCは、結果セットを連想配列として返す
     $wineData = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // 結果をJSON形式で出力

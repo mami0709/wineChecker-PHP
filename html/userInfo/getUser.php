@@ -34,5 +34,4 @@ if (!$user) {
 	exit;
 }
 
-// unset($user['user_password']); // パスワードはレスポンスに含めない
 echo json_encode($user);
